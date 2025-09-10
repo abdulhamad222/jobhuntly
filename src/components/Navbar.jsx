@@ -9,9 +9,9 @@ export default function Navbar(){
             {/* Navbar */}
             <nav className="flex justify-between items-center px-6 md:px-8 py-4">
                 <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-20">
-                <h1 className="font-bold text-2xl text-white">JobHuntly</h1>
+                <h1 className="font-bold text-2xl">JobHuntly</h1>
 
-                <div className="flex gap-4 md:gap-6 text-gray-300 text-sm md:text-base">
+                <div className="flex gap-4 md:gap-6 text-gray-500 text-sm md:text-base">
                     <Link
                     href="#"
                     className="transition-all duration-300 hover:text-blue-400"

@@ -37,7 +37,7 @@ export default function Home() {
     <div className="min-h-screen">
 
       {/*SECTION 1 */}
-      <section className="px-6 md:px-16 lg:px-32 py-16 md:py-28 max-w-screen text-white">
+      <section className="px-6 md:px-16 lg:px-32 py-16 md:py-28 max-w-screen">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
           Discover <br /> more than{" "}
         </h1>
@@ -51,7 +51,7 @@ export default function Home() {
           new career heights and passionate about startups.
         </p>
 
-        <div className="bg-white text-black w-full md:max-w-4xl flex flex-col md:flex-row items-stretch md:items-center gap-3 mt-8 p-3">
+        <div className="bg-white text-black border-2 w-full md:max-w-4xl flex flex-col md:flex-row items-stretch md:items-center gap-3 mt-8 p-3">
           <input
             type="text"
             placeholder="Job title or keyword"
@@ -70,7 +70,7 @@ export default function Home() {
             Search my job
           </button>
         </div>
-        <p className="text-base md:text-md lg:text-lg text-gray-400 mt-4">
+        <p className="text-base md:text-md lg:text-lg text-gray-500 mt-4">
           Popular: UI Designer, UX Researcher, Android, Admin
         </p>
       </section>
@@ -139,7 +139,7 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8">
-          <div className="bg-white text-black p-6 flex flex-col">
+          <div className="bg-white border-2 text-black p-6 flex flex-col">
             <Brush className="w-14 h-14 text-[#443fd5]" />
             <h3 className="mt-6 text-2xl font-semibold text-[#25314b]">Design</h3>
             <p className="text-gray-500 text-lg mt-1 flex justify-between">
@@ -149,7 +149,7 @@ export default function Home() {
             
           </div>
 
-          <div className="bg-white text-black p-6 flex flex-col">
+          <div className="bg-white border-2 text-black p-6 flex flex-col">
             <Briefcase className="w-14 h-14 text-[#443fd5]" />
             <h3 className="mt-6 text-2xl font-semibold text-[#25314b]">Sales</h3>
             <p className="text-gray-500 text-lg mt-1 flex justify-between">
@@ -167,7 +167,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="bg-white text-black p-6 flex flex-col">
+          <div className="bg-white border-2 text-black p-6 flex flex-col">
             <Wallet className="w-14 h-14 text-[#443fd5]" />
             <h3 className="mt-6 text-2xl font-semibold text-[#25314b]">Finance</h3>
             <p className="text-gray-500 text-lg mt-1 flex justify-between">
@@ -176,7 +176,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="bg-white text-black p-6 flex flex-col">
+          <div className="bg-white border-2 text-black p-6 flex flex-col">
             <Laptop className="w-14 h-14 text-[#443fd5]" />
             <h3 className="mt-6 text-2xl font-semibold text-[#25314b]">Technology</h3>
             <p className="text-gray-500 text-lg mt-1 flex justify-between">
@@ -185,7 +185,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="bg-white text-black p-6 flex flex-col">
+          <div className="bg-white border-2 text-black p-6 flex flex-col">
             <Cog className="w-14 h-14 text-[#443fd5]" />
             <h3 className="mt-6 text-2xl font-semibold text-[#25314b]">Engineering</h3>
             <p className="text-gray-500 text-lg mt-1 flex justify-between">
@@ -194,7 +194,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="bg-white text-black p-6 flex flex-col">
+          <div className="bg-white border-2 text-black p-6 flex flex-col">
             <BarChart className="w-14 h-14 text-[#443fd5]" />
             <h3 className="mt-6 text-2xl font-semibold text-[#25314b]">Business</h3>
             <p className="text-gray-500 text-lg mt-1 flex justify-between">
@@ -203,7 +203,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="bg-white text-black p-6 flex flex-col">
+          <div className="bg-white border-2 text-black p-6 flex flex-col">
             <Users className="w-14 h-14 text-[#443fd5]" />
             <h3 className="mt-6 text-2xl font-semibold text-[#25314b]">Human Resource</h3>
             <p className="text-gray-500 text-lg mt-1 flex justify-between">
@@ -268,7 +268,7 @@ export default function Home() {
 
 
           {/* 2 */}
-          <div className="bg-white text-black p-6">
+          <div className="bg-white border-2 text-black p-6">
             <a href="#">
               <div className="flex justify-between items-start">
                 <Image src="/logos/dropbox.png" alt="Dropbox" width={40} height={40} />
@@ -289,7 +289,7 @@ export default function Home() {
           </div>
 
           {/* Card 3 */}
-          <div className="bg-white text-black p-6">
+          <div className="bg-white border-2 text-black p-6">
             <a href="#">
               <div className="flex justify-between items-start">
                 <Image src="/logos/pitch.png" alt="Pitch" width={40} height={40} />
@@ -309,7 +309,7 @@ export default function Home() {
           </div>
 
           {/* Card 4 */}
-          <div className="bg-white text-black p-6">
+          <div className="bg-white border-2 text-black p-6">
             <a href="#">
               <div className="flex justify-between items-start">
                 <Image src="/logos/blinkist.png" alt="Blinkist" width={40} height={40} />
@@ -329,7 +329,7 @@ export default function Home() {
           </div>
 
           {/* Card 5 */}
-          <div className="bg-white text-black p-6">
+          <div className="bg-white border-2 text-black p-6">
             <a href="#">
               <div className="flex justify-between items-start">
                 <Image src="/logos/classpass.jpg" alt="ClassPass" width={40} height={40} />
@@ -350,7 +350,7 @@ export default function Home() {
           </div>
 
           {/* Card 6 */}
-          <div className="bg-white text-black p-6">
+          <div className="bg-white border-2 text-black p-6">
             <a href="#">
               <div className="flex justify-between items-start">
                 <Image src="/logos/canva.png" alt="Canva" width={40} height={40} />
@@ -371,7 +371,7 @@ export default function Home() {
           </div>
 
           {/* Card 7 */}
-          <div className="bg-white text-black p-6">
+          <div className="bg-white border-2 text-black p-6">
             <a href="#">
               <div className="flex justify-between items-start">
                 <Image src="/logos/godaddy.png" alt="GoDaddy" width={40} height={40} />
@@ -391,7 +391,7 @@ export default function Home() {
           </div>
 
           {/* Card 8 */}
-          <div className="bg-white text-black p-6">
+          <div className="bg-white border-2 text-black p-6">
             <a href="#">
               <div className="flex justify-between items-start">
                 <Image src="/logos/twitter.jpg" alt="Twitter" width={40} height={40} />
@@ -429,7 +429,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
 
             {/* 1 */}
-            <div className="bg-white p-6 flex items-start justify-between">
+            <div className="bg-white border-2 p-6 flex items-start justify-between">
               <a href="#">
                 <div className="grid grid-cols-3">
                   <div className="col-span-1 gap-2">
@@ -460,7 +460,7 @@ export default function Home() {
             </div>
 
             {/* 2 */}
-            <div className="bg-white p-6 flex items-start justify-between">
+            <div className="bg-white border-2 p-6 flex items-start justify-between">
               <a href="#">
                 <div className="grid grid-cols-3">
                   <div className="col-span-1 gap-2">
@@ -493,7 +493,7 @@ export default function Home() {
             </div>
 
             {/* 3 */}
-            <div className="bg-white p-6 flex items-start justify-between">
+            <div className="bg-white border-2 p-6 flex items-start justify-between">
               <a href="#">
                 <div className="grid grid-cols-3">
                   <div className="col-span-1 gap-2">
@@ -526,7 +526,7 @@ export default function Home() {
             </div>
 
             {/* 4 */}
-            <div className="bg-white p-6 flex items-start justify-between">
+            <div className="bg-white border-2 p-6 flex items-start justify-between">
               <a href="#">
                 <div className="grid grid-cols-3">
                   <div className="col-span-1 gap-2">
@@ -559,7 +559,7 @@ export default function Home() {
             </div>
 
             {/* 5 */}
-            <div className="bg-white p-6 flex items-start justify-between">
+            <div className="bg-white border-2 p-6 flex items-start justify-between">
               <a href="#">
                 <div className="grid grid-cols-3">
                   <div className="col-span-1 gap-2">
@@ -592,7 +592,7 @@ export default function Home() {
             </div>
 
             {/* 6 */}
-            <div className="bg-white p-6 flex items-start justify-between">
+            <div className="bg-white border-2 p-6 flex items-start justify-between">
               <a href="#">
                 <div className="grid grid-cols-3">
                   <div className="col-span-1 gap-2">
@@ -625,7 +625,7 @@ export default function Home() {
             </div>
 
             {/* 7 */}
-            <div className="bg-white p-6 flex items-start justify-between">
+            <div className="bg-white border-2 p-6 flex items-start justify-between">
               <a href="#">
                 <div className="grid grid-cols-3">
                   <div className="col-span-1 gap-2">
@@ -658,7 +658,7 @@ export default function Home() {
             </div>
 
             {/* 8 */}
-            <div className="bg-white p-6 flex items-start justify-between">
+            <div className="bg-white border-2 p-6 flex items-start justify-between">
               <a href="#">
                 <div className="grid grid-cols-3">
                   <div className="col-span-1 gap-2">

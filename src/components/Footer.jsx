@@ -20,7 +20,7 @@ export default function Footer(){
     return(
         <div>
             {/* FOOTER */}
-            <footer className="text-gray-300 py-16 px-6">
+            <footer className="bg-[#212431] text-gray-300 py-16 px-6">
                 <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
                 <div>
                     <div className="flex items-center gap-2">
