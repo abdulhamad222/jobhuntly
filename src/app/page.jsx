@@ -1,6 +1,7 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
+import toast from "react-hot-toast";
 
 import {
   Brush,
@@ -12,48 +13,28 @@ import {
   BarChart,
   Users,
   ArrowRight,
-  Facebook,
-  Instagram, 
-  Linkedin, 
-  Twitter, 
-  Dribbble
 } from "lucide-react";
 
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
+
+  const [title , setTitle] = useState("");
+  const [location , setLocation] = useState("");
+
+  const handleSearch = () => {
+    if( !title || !location ) {
+      toast.error("Please fill the both feild");
+      return;
+    }
+    toast.success(`Searching Job for "${title}" in "${location}"`)
+     setTitle("")
+    setLocation("")
+  };
+
   return (
     <div className="min-h-screen">
-
-
-      {/* Navbar */}
-      <nav className="flex justify-between items-center px-6 md:px-8 py-4">
-        <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-20">
-          <h1 className="font-bold text-2xl text-white">JobHuntly</h1>
-
-          <div className="flex gap-4 md:gap-6 text-gray-300 text-sm md:text-base">
-            <a
-              href="#"
-              className="transition-all duration-300 hover:text-blue-400"
-            >
-              Find Jobs
-            </a>
-            <a
-              href="#"
-              className="transition-all duration-300 hover:text-blue-400"
-            >
-              Browse Companies
-            </a>
-          </div>
-        </div>
-
-        <div className="flex gap-3 md:gap-4 text-sm md:text-base">
-          <button className="text-blue-500">Login</button>
-          <button className="bg-blue-600 px-3 md:px-4 py-2 rounded hover:bg-blue-700 text-white">
-            Sign Up
-          </button>
-        </div>
-      </nav>
 
       {/*SECTION 1 */}
       <section className="px-6 md:px-16 lg:px-32 py-16 md:py-28 max-w-screen text-white">
@@ -75,13 +56,17 @@ export default function Home() {
             type="text"
             placeholder="Job title or keyword"
             className="flex-1 p-2 outline-none border md:border-0 rounded md:rounded-none"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
           />
           <input
             type="text"
             placeholder="Location"
             className="flex-1 p-2 outline-none border md:border-0 rounded md:rounded-none"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
           />
-          <button className="bg-blue-600 text-white px-6 py-3 md:px-10 md:py-5 rounded hover:bg-blue-700">
+          <button className="bg-blue-600 text-white px-6 py-3 md:px-10 md:py-5 rounded hover:bg-blue-700" onClick={handleSearch}>
             Search my job
           </button>
         </div>
@@ -150,7 +135,7 @@ export default function Home() {
           <h2 className="text-5xl font-bold">
             Explore by <span className="text-[#56a9f3]">category</span>
           </h2>
-          <button className="text-sm text-[#463fe2]">Show all jobs →</button>
+          <Link href="#" className="text-sm text-[#463fe2]">Show all jobs →</Link>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8">
@@ -159,7 +144,7 @@ export default function Home() {
             <h3 className="mt-6 text-2xl font-semibold text-[#25314b]">Design</h3>
             <p className="text-gray-500 text-lg mt-1 flex justify-between">
               259 jobs available
-              <ArrowRight className="text-[#25314b]" />
+              <Link href="#"><ArrowRight className="text-[#25314b]" /></Link>
             </p>
             
           </div>
@@ -169,7 +154,7 @@ export default function Home() {
             <h3 className="mt-6 text-2xl font-semibold text-[#25314b]">Sales</h3>
             <p className="text-gray-500 text-lg mt-1 flex justify-between">
               305 jobs available
-              <ArrowRight className="text-[#25314b]" />
+              <Link href="#"><ArrowRight className="text-[#25314b]" /></Link>
             </p>
           </div>
 
@@ -178,7 +163,7 @@ export default function Home() {
             <h3 className="mt-6 text-2xl font-semibold">Marketing</h3>
             <p className="text-lg mt-1 flex justify-between">
               180 jobs available
-              <ArrowRight />
+              <Link href="#"><ArrowRight /></Link>              
             </p>
           </div>
 
@@ -187,7 +172,7 @@ export default function Home() {
             <h3 className="mt-6 text-2xl font-semibold text-[#25314b]">Finance</h3>
             <p className="text-gray-500 text-lg mt-1 flex justify-between">
               250 jobs available
-              <ArrowRight className="text-[#25314b]" />
+              <Link href="#"><ArrowRight className="text-[#25314b]" /></Link>
             </p>
           </div>
 
@@ -196,7 +181,7 @@ export default function Home() {
             <h3 className="mt-6 text-2xl font-semibold text-[#25314b]">Technology</h3>
             <p className="text-gray-500 text-lg mt-1 flex justify-between">
               420 jobs available
-              <ArrowRight className="text-[#25314b]" />
+              <Link href="#"><ArrowRight className="text-[#25314b]" /></Link>              
             </p>
           </div>
 
@@ -205,7 +190,7 @@ export default function Home() {
             <h3 className="mt-6 text-2xl font-semibold text-[#25314b]">Engineering</h3>
             <p className="text-gray-500 text-lg mt-1 flex justify-between">
               547 jobs available
-              <ArrowRight className="text-[#25314b]" />
+              <Link href="#"><ArrowRight className="text-[#25314b]" /></Link>              
             </p>
           </div>
 
@@ -214,7 +199,7 @@ export default function Home() {
             <h3 className="mt-6 text-2xl font-semibold text-[#25314b]">Business</h3>
             <p className="text-gray-500 text-lg mt-1 flex justify-between">
               211 jobs available
-              <ArrowRight className="text-[#25314b]" />
+              <Link href="#"><ArrowRight className="text-[#25314b]" /></Link>              
             </p>
           </div>
 
@@ -223,7 +208,7 @@ export default function Home() {
             <h3 className="mt-6 text-2xl font-semibold text-[#25314b]">Human Resource</h3>
             <p className="text-gray-500 text-lg mt-1 flex justify-between">
               345 jobs available
-              <ArrowRight className="text-[#25314b]" />
+              <Link href="#"><ArrowRight className="text-[#25314b]" /></Link>             
             </p>
           </div>
         </div>
@@ -234,9 +219,9 @@ export default function Home() {
             <p className="mt-5 text-lg">
               Start posting jobs for only $99. 
             </p>
-            <button className="mt-6 bg-white text-[#453cdf] px-6 py-2 font-semibold">
+            <Link href="#" className="block mt-6 bg-white max-w-44 text-[#453cdf] px-6 py-4 font-semibold">
               Sign Up for Free
-            </button>
+            </Link>
           </div>
 
           <div className="mt-6 md:mt-0">
@@ -260,152 +245,169 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* 1 */}
           <div className="bg-white text-black p-6">
-            <div className="flex justify-between items-start">
-              <Image src="/logos/revolut.jpg" alt="Revolut" width={40} height={40} />
-              <span className="border border-[#4745b0] text-[#4745b0] text-md px-2 py-1">
-                Full Time
-              </span>
-            </div>
-            <h3 className="mt-4 text-xl font-semibold text-[#22334d]">Email Marketing</h3>
-            <p className="text-gray-500 text-md mt-1">Revolut • Madrid, Spain</p>
-            <p className="text-gray-400 text-md mt-3">
-              Revolut is looking for Email Marketing to help team ma...
-            </p>
-            <div className="flex gap-2 mt-4">
-              <span className="text-md px-3 py-1 rounded-full bg-orange-50 text-orange-500">Marketing</span>
-              <span className="text-md px-3 py-1 rounded-full bg-green-50 text-green-500">Design</span>
-            </div>
+            <a href="#">
+              <div className="flex justify-between items-start">
+                <Image src="/logos/revolut.jpg" alt="Revolut" width={40} height={40} />
+                <span className="border border-[#4745b0] text-[#4745b0] text-md px-2 py-1">
+                  Full Time
+                </span>
+              </div>
+              <h3 className="mt-4 text-xl font-semibold text-[#22334d]">Email Marketing</h3>
+              <p className="text-gray-500 text-md mt-1">Revolut • Madrid, Spain</p>
+              <p className="text-gray-400 text-md mt-3">
+                Revolut is looking for Email Marketing to help team ma...
+              </p>
+              <div className="flex gap-2 mt-4">
+                <span className="text-md px-3 py-1 rounded-full bg-orange-50 text-orange-500">Marketing</span>
+                <span className="text-md px-3 py-1 rounded-full bg-green-50 text-green-500">Design</span>
+              </div>
+            </a>
           </div>
 
 
-
+          {/* 2 */}
           <div className="bg-white text-black p-6">
-            <div className="flex justify-between items-start">
-              <Image src="/logos/dropbox.png" alt="Dropbox" width={40} height={40} />
-              <span className="border border-[#4745b0] text-[#4745b0] text-md px-2 py-1">
-                Full Time
-              </span>
-            </div>
-            <h3 className="mt-4 text-xl font-semibold text-[#22334d]">Brand Designer</h3>
-            <p className="text-gray-500 text-md mt-1">Dropbox • San Francisco, US</p>
-            <p className="text-gray-400 text-md mt-3">
-              Dropbox is looking for Brand Designer to help the team t...
-            </p>
-            <div className="flex gap-2 mt-4">
-              <span className="text-md px-3 py-1 rounded-full bg-green-50 text-green-500">Design</span>
-              <span className="text-md px-3 py-1 rounded-full bg-purple-50 text-purple-500">Business</span>
-            </div>
+            <a href="#">
+              <div className="flex justify-between items-start">
+                <Image src="/logos/dropbox.png" alt="Dropbox" width={40} height={40} />
+                <span className="border border-[#4745b0] text-[#4745b0] text-md px-2 py-1">
+                  Full Time
+                </span>
+              </div>
+              <h3 className="mt-4 text-xl font-semibold text-[#22334d]">Brand Designer</h3>
+              <p className="text-gray-500 text-md mt-1">Dropbox • San Francisco, US</p>
+              <p className="text-gray-400 text-md mt-3">
+                Dropbox is looking for Brand Designer to help the team t...
+              </p>
+              <div className="flex gap-2 mt-4">
+                <span className="text-md px-3 py-1 rounded-full bg-green-50 text-green-500">Design</span>
+                <span className="text-md px-3 py-1 rounded-full bg-purple-50 text-purple-500">Business</span>
+              </div>
+            </a>
           </div>
 
           {/* Card 3 */}
           <div className="bg-white text-black p-6">
-            <div className="flex justify-between items-start">
-              <Image src="/logos/pitch.png" alt="Pitch" width={40} height={40} />
-              <span className="border border-[#4745b0] text-[#4745b0] text-md px-2 py-1">
-                Full Time
-              </span>
-            </div>
-            <h3 className="mt-4 text-xl font-semibold text-[#22334d]">Email Marketing</h3>
-            <p className="text-gray-500 text-md mt-1">Pitch • Berlin, Germany</p>
-            <p className="text-gray-400 text-md mt-3">
-              Pitch is looking for Customer Manager to join marketing t...
-            </p>
-            <div className="flex gap-2 mt-4">
-              <span className="text-md px-3 py-1 rounded-full bg-orange-50 text-orange-500">Marketing</span>
-            </div>
+            <a href="#">
+              <div className="flex justify-between items-start">
+                <Image src="/logos/pitch.png" alt="Pitch" width={40} height={40} />
+                <span className="border border-[#4745b0] text-[#4745b0] text-md px-2 py-1">
+                  Full Time
+                </span>
+              </div>
+              <h3 className="mt-4 text-xl font-semibold text-[#22334d]">Email Marketing</h3>
+              <p className="text-gray-500 text-md mt-1">Pitch • Berlin, Germany</p>
+              <p className="text-gray-400 text-md mt-3">
+                Pitch is looking for Customer Manager to join marketing t...
+              </p>
+              <div className="flex gap-2 mt-4">
+                <span className="text-md px-3 py-1 rounded-full bg-orange-50 text-orange-500">Marketing</span>
+              </div>
+            </a>
           </div>
 
           {/* Card 4 */}
           <div className="bg-white text-black p-6">
-            <div className="flex justify-between items-start">
-              <Image src="/logos/blinkist.png" alt="Blinkist" width={40} height={40} />
-              <span className="border border-[#4745b0] text-[#4745b0] text-md px-2 py-1">
-                Full Time
-              </span>
-            </div>
-            <h3 className="mt-4 text-xl font-semibold text-[#22334d]">Visual Designer</h3>
-            <p className="text-gray-500 text-md mt-1">Blinkist • Granada, Spain</p>
-            <p className="text-gray-400 text-md mt-3">
-              Blinkist is looking for Visual Designer to help team desi...
-            </p>
-            <div className="flex gap-2 mt-4">
-              <span className="text-md px-3 py-1 rounded-full bg-green-50 text-green-500">Design</span>
-            </div>
+            <a href="#">
+              <div className="flex justify-between items-start">
+                <Image src="/logos/blinkist.png" alt="Blinkist" width={40} height={40} />
+                <span className="border border-[#4745b0] text-[#4745b0] text-md px-2 py-1">
+                  Full Time
+                </span>
+              </div>
+              <h3 className="mt-4 text-xl font-semibold text-[#22334d]">Visual Designer</h3>
+              <p className="text-gray-500 text-md mt-1">Blinkist • Granada, Spain</p>
+              <p className="text-gray-400 text-md mt-3">
+                Blinkist is looking for Visual Designer to help team desi...
+              </p>
+              <div className="flex gap-2 mt-4">
+                <span className="text-md px-3 py-1 rounded-full bg-green-50 text-green-500">Design</span>
+              </div>
+            </a>
           </div>
 
           {/* Card 5 */}
           <div className="bg-white text-black p-6">
-            <div className="flex justify-between items-start">
-              <Image src="/logos/classpass.jpg" alt="ClassPass" width={40} height={40} />
-              <span className="border border-[#4745b0] text-[#4745b0] text-md px-2 py-1">
-                Full Time
-              </span>
-            </div>
-            <h3 className="mt-4 text-xl font-semibold text-[#22334d]">Product Designer</h3>
-            <p className="text-gray-500 text-md mt-1">ClassPass • Manchester, UK</p>
-            <p className="text-gray-400 text-md mt-3">
-              ClassPass is looking for Product Designer to help us...
-            </p>
-            <div className="flex gap-2 mt-4">
-              <span className="text-md px-3 py-1 rounded-full bg-orange-50 text-orange-500">Marketing</span>
-              <span className="text-md px-3 py-1 rounded-full bg-green-50 text-green-500">Design</span>
-            </div>
+            <a href="#">
+              <div className="flex justify-between items-start">
+                <Image src="/logos/classpass.jpg" alt="ClassPass" width={40} height={40} />
+                <span className="border border-[#4745b0] text-[#4745b0] text-md px-2 py-1">
+                  Full Time
+                </span>
+              </div>
+              <h3 className="mt-4 text-xl font-semibold text-[#22334d]">Product Designer</h3>
+              <p className="text-gray-500 text-md mt-1">ClassPass • Manchester, UK</p>
+              <p className="text-gray-400 text-md mt-3">
+                ClassPass is looking for Product Designer to help us...
+              </p>
+              <div className="flex gap-2 mt-4">
+                <span className="text-md px-3 py-1 rounded-full bg-orange-50 text-orange-500">Marketing</span>
+                <span className="text-md px-3 py-1 rounded-full bg-green-50 text-green-500">Design</span>
+              </div>
+            </a>
           </div>
 
           {/* Card 6 */}
           <div className="bg-white text-black p-6">
-            <div className="flex justify-between items-start">
-              <Image src="/logos/canva.png" alt="Canva" width={40} height={40} />
-              <span className="border border-[#4745b0] text-[#4745b0] text-md px-2 py-1">
-                Full Time
-              </span>
-            </div>
-            <h3 className="mt-4 text-xl font-semibold text-[#22334d]">Lead Designer</h3>
-            <p className="text-gray-500 text-md mt-1">Canva • Ontario, Canada</p>
-            <p className="text-gray-400 text-md mt-3">
-              Canva is looking for Lead Engineer to help develop n...
-            </p>
-            <div className="flex gap-2 mt-4">
-              <span className="text-md px-3 py-1 rounded-full bg-green-50 text-green-500">Design</span>
-              <span className="text-md px-3 py-1 rounded-full bg-purple-50 text-purple-500">Business</span>
-            </div>
+            <a href="#">
+              <div className="flex justify-between items-start">
+                <Image src="/logos/canva.png" alt="Canva" width={40} height={40} />
+                <span className="border border-[#4745b0] text-[#4745b0] text-md px-2 py-1">
+                  Full Time
+                </span>
+              </div>
+              <h3 className="mt-4 text-xl font-semibold text-[#22334d]">Lead Designer</h3>
+              <p className="text-gray-500 text-md mt-1">Canva • Ontario, Canada</p>
+              <p className="text-gray-400 text-md mt-3">
+                Canva is looking for Lead Engineer to help develop n...
+              </p>
+              <div className="flex gap-2 mt-4">
+                <span className="text-md px-3 py-1 rounded-full bg-green-50 text-green-500">Design</span>
+                <span className="text-md px-3 py-1 rounded-full bg-purple-50 text-purple-500">Business</span>
+              </div>
+            </a>
           </div>
 
           {/* Card 7 */}
           <div className="bg-white text-black p-6">
-            <div className="flex justify-between items-start">
-              <Image src="/logos/godaddy.png" alt="GoDaddy" width={40} height={40} />
-              <span className="border border-[#4745b0] text-[#4745b0] text-md px-2 py-1">
-                Full Time
-              </span>
-            </div>
-            <h3 className="mt-4 text-xl font-semibold text-[#22334d]">Brand Strategist</h3>
-            <p className="text-gray-500 text-md mt-1">GoDaddy • Marseille, France</p>
-            <p className="text-gray-400 text-md mt-3">
-              GoDaddy is looking for Brand Strategist to join the team...
-            </p>
-            <div className="flex gap-2 mt-4">
-              <span className="text-md px-3 py-1 rounded-full bg-orange-50 text-orange-500">Marketing</span>
-            </div>
+            <a href="#">
+              <div className="flex justify-between items-start">
+                <Image src="/logos/godaddy.png" alt="GoDaddy" width={40} height={40} />
+                <span className="border border-[#4745b0] text-[#4745b0] text-md px-2 py-1">
+                  Full Time
+                </span>
+              </div>
+              <h3 className="mt-4 text-xl font-semibold text-[#22334d]">Brand Strategist</h3>
+              <p className="text-gray-500 text-md mt-1">GoDaddy • Marseille, France</p>
+              <p className="text-gray-400 text-md mt-3">
+                GoDaddy is looking for Brand Strategist to join the team...
+              </p>
+              <div className="flex gap-2 mt-4">
+                <span className="text-md px-3 py-1 rounded-full bg-orange-50 text-orange-500">Marketing</span>
+              </div>
+            </a>
           </div>
 
           {/* Card 8 */}
           <div className="bg-white text-black p-6">
-            <div className="flex justify-between items-start">
-              <Image src="/logos/twitter.jpg" alt="Twitter" width={40} height={40} />
-              <span className="border border-[#4745b0] text-[#4745b0] text-md px-2 py-1">
-                Full Time
-              </span>
-            </div>
-            <h3 className="mt-4 text-xl font-semibold text-[#22334d]">Data Analyst</h3>
-            <p className="text-gray-500 text-md mt-1">Twitter • San Diego, US</p>
-            <p className="text-gray-400 text-md mt-3">
-              Twitter is looking for Data Analyst to help team desi...
-            </p>
-            <div className="flex gap-2 mt-4">
-              <span className="text-md px-3 py-1 rounded-full bg-red-50 text-red-500">Technology</span>
-            </div>
+            <a href="#">
+              <div className="flex justify-between items-start">
+                <Image src="/logos/twitter.jpg" alt="Twitter" width={40} height={40} />
+                <span className="border border-[#4745b0] text-[#4745b0] text-md px-2 py-1">
+                  Full Time
+                </span>
+              </div>
+              <h3 className="mt-4 text-xl font-semibold text-[#22334d]">Data Analyst</h3>
+              <p className="text-gray-500 text-md mt-1">Twitter • San Diego, US</p>
+              <p className="text-gray-400 text-md mt-3">
+                Twitter is looking for Data Analyst to help team desi...
+              </p>
+              <div className="flex gap-2 mt-4">
+                <span className="text-md px-3 py-1 rounded-full bg-red-50 text-red-500">Technology</span>
+              </div>
+            </a>
           </div>
         </div>
       </section>
@@ -428,325 +430,268 @@ export default function Home() {
 
             {/* 1 */}
             <div className="bg-white p-6 flex items-start justify-between">
-              <div className="grid grid-cols-3">
-                <div className="col-span-1 gap-2">
-                  <Image
-                    src="/logos/dropbox.png"
-                    alt="Nomad"
-                    width={42}
-                    height={42}
-                  />
-                </div>
-                <div className="col-span-2">
-                  <h3 className="text-xl font-semibold text-[#28324a]">Social Media Assistant</h3>
-                  <p className="text-gray-500 text-md mt-1">Nomad • Paris, France</p>
-                  <div className="flex gap-2 mt-3">
-                    <span className="px-3 py-1 text-sm rounded-full bg-green-50 text-green-500">
-                      Full-Time
-                    </span>
-                    <span className="px-3 py-1 text-sm rounded-full border border-orange-500 bg-orange-50 text-orange-500">
-                      Marketing
-                    </span>
-                    <span className="px-3 py-1 text-sm rounded-full border border-purple-500 bg-purple-50 text-purple-500">
-                      Design
-                    </span>
+              <a href="#">
+                <div className="grid grid-cols-3">
+                  <div className="col-span-1 gap-2">
+                    <Image
+                      src="/logos/dropbox.png"
+                      alt="Nomad"
+                      width={42}
+                      height={42}
+                    />
+                  </div>
+                  <div className="col-span-2">
+                    <h3 className="text-xl font-semibold text-[#28324a]">Social Media Assistant</h3>
+                    <p className="text-gray-500 text-md mt-1">Nomad • Paris, France</p>
+                    <div className="flex gap-2 mt-3">
+                      <span className="px-3 py-1 text-sm rounded-full bg-green-50 text-green-500">
+                        Full-Time
+                      </span>
+                      <span className="px-3 py-1 text-sm rounded-full border border-orange-500 bg-orange-50 text-orange-500">
+                        Marketing
+                      </span>
+                      <span className="px-3 py-1 text-sm rounded-full border border-purple-500 bg-purple-50 text-purple-500">
+                        Design
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </a>
             </div>
 
             {/* 2 */}
             <div className="bg-white p-6 flex items-start justify-between">
-              <div className="grid grid-cols-3">
-                <div className="col-span-1 gap-2">
-                  <Image
-                    src="/logos/dropbox.png"
-                    alt="Netlify"
-                    width={42}
-                    height={42}
-                  />
-                </div>
-                <div className="col-span-2">
-                  <h3 className="text-xl font-semibold text-[#28324a]">Social Media Assistant</h3>
-                  <p className="text-gray-500 text-md mt-1">
-                    Netlify • Paris, France
-                  </p>
-                  <div className="flex gap-2 mt-3">
-                    <span className="px-3 py-1 text-sm rounded-full bg-green-50 text-green-500">
-                      Full-Time
-                    </span>
-                    <span className="px-3 py-1 text-sm rounded-full border border-orange-500 bg-orange-50 text-orange-500">
-                      Marketing
-                    </span>
-                    <span className="px-3 py-1 text-sm rounded-full border border-purple-500 bg-purple-50 text-purple-500">
-                      Design
-                    </span>
+              <a href="#">
+                <div className="grid grid-cols-3">
+                  <div className="col-span-1 gap-2">
+                    <Image
+                      src="/logos/dropbox.png"
+                      alt="Netlify"
+                      width={42}
+                      height={42}
+                    />
+                  </div>
+                  <div className="col-span-2">
+                    <h3 className="text-xl font-semibold text-[#28324a]">Social Media Assistant</h3>
+                    <p className="text-gray-500 text-md mt-1">
+                      Netlify • Paris, France
+                    </p>
+                    <div className="flex gap-2 mt-3">
+                      <span className="px-3 py-1 text-sm rounded-full bg-green-50 text-green-500">
+                        Full-Time
+                      </span>
+                      <span className="px-3 py-1 text-sm rounded-full border border-orange-500 bg-orange-50 text-orange-500">
+                        Marketing
+                      </span>
+                      <span className="px-3 py-1 text-sm rounded-full border border-purple-500 bg-purple-50 text-purple-500">
+                        Design
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </a>
             </div>
 
             {/* 3 */}
             <div className="bg-white p-6 flex items-start justify-between">
-              <div className="grid grid-cols-3">
-                <div className="col-span-1 gap-2">
-                  <Image
-                    src="/logos/dropbox.png"
-                    alt="Dropbox"
-                    width={42}
-                    height={42}
-                  />
-                </div>
-                <div className="col-span-2">
-                  <h3 className="text-xl font-semibold text-[#28324a]">Brand Designer</h3>
-                  <p className="text-gray-500 text-md mt-1">
-                    Dropbox • San Francisco, USA
-                  </p>
-                  <div className="flex gap-2 mt-3">
-                    <span className="px-3 py-1 text-sm rounded-full bg-green-50 text-green-500">
-                      Full-Time
-                    </span>
-                    <span className="px-3 py-1 text-sm rounded-full broder border-orange-500 bg-orange-50 text-orange-500">
-                      Marketing
-                    </span>
-                    <span className="px-3 py-1 text-sm rounded-full border border-purple-500 bg-purple-50 text-purple-500">
-                      Design
-                    </span>
+              <a href="#">
+                <div className="grid grid-cols-3">
+                  <div className="col-span-1 gap-2">
+                    <Image
+                      src="/logos/dropbox.png"
+                      alt="Dropbox"
+                      width={42}
+                      height={42}
+                    />
+                  </div>
+                  <div className="col-span-2">
+                    <h3 className="text-xl font-semibold text-[#28324a]">Brand Designer</h3>
+                    <p className="text-gray-500 text-md mt-1">
+                      Dropbox • San Francisco, USA
+                    </p>
+                    <div className="flex gap-2 mt-3">
+                      <span className="px-3 py-1 text-sm rounded-full bg-green-50 text-green-500">
+                        Full-Time
+                      </span>
+                      <span className="px-3 py-1 text-sm rounded-full broder border-orange-500 bg-orange-50 text-orange-500">
+                        Marketing
+                      </span>
+                      <span className="px-3 py-1 text-sm rounded-full border border-purple-500 bg-purple-50 text-purple-500">
+                        Design
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </a>
             </div>
 
             {/* 4 */}
             <div className="bg-white p-6 flex items-start justify-between">
-              <div className="grid grid-cols-3">
-                <div className="col-span-1 gap-2">
-                  <Image
-                    src="/logos/dropbox.png"
-                    alt="Maze"
-                    width={42}
-                    height={42}
-                  />
-                </div>
-                <div className="col-span-2">
-                  <h3 className="text-xl font-semibold text-[#28324a]">Brand Designer</h3>
-                  <p className="text-gray-500 text-md mt-1">
-                    Maze • San Francisco, USA
-                  </p>
-                  <div className="flex gap-2 mt-3">
-                    <span className="px-3 py-1 text-sm rounded-full bg-green-50 text-green-500">
-                      Full-Time
-                    </span>
-                    <span className="px-3 py-1 text-sm rounded-full border border-orange-500 bg-orange-50 text-orange-500">
-                      Marketing
-                    </span>
-                    <span className="px-3 py-1 text-sm rounded-full border border-purple-500 bg-purple-50 text-purple-500">
-                      Design
-                    </span>
+              <a href="#">
+                <div className="grid grid-cols-3">
+                  <div className="col-span-1 gap-2">
+                    <Image
+                      src="/logos/dropbox.png"
+                      alt="Maze"
+                      width={42}
+                      height={42}
+                    />
+                  </div>
+                  <div className="col-span-2">
+                    <h3 className="text-xl font-semibold text-[#28324a]">Brand Designer</h3>
+                    <p className="text-gray-500 text-md mt-1">
+                      Maze • San Francisco, USA
+                    </p>
+                    <div className="flex gap-2 mt-3">
+                      <span className="px-3 py-1 text-sm rounded-full bg-green-50 text-green-500">
+                        Full-Time
+                      </span>
+                      <span className="px-3 py-1 text-sm rounded-full border border-orange-500 bg-orange-50 text-orange-500">
+                        Marketing
+                      </span>
+                      <span className="px-3 py-1 text-sm rounded-full border border-purple-500 bg-purple-50 text-purple-500">
+                        Design
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </a>
             </div>
 
             {/* 5 */}
             <div className="bg-white p-6 flex items-start justify-between">
-              <div className="grid grid-cols-3">
-                <div className="col-span-1 gap-2">
-                  <Image
-                    src="/logos/dropbox.png"
-                    alt="Terraform"
-                    width={42}
-                    height={42}
-                  />
-                </div>
-                <div className="col-span-2">
-                  <h3 className="text-xl font-semibold text-[#28324a]">Interactive Developer</h3>
-                  <p className="text-gray-500 text-md mt-1">
-                    Terraform • Hamburg, Germany
-                  </p>
-                  <div className="flex gap-2 mt-3">
-                    <span className="px-3 py-1 text-sm rounded-full bg-green-50 text-green-500">
-                      Full-Time
-                    </span>
-                    <span className="px-3 py-1 text-sm rounded-full border border-orange-500 bg-orange-50 text-orange-500">
-                      Marketing
-                    </span>
-                    <span className="px-3 py-1 text-sm rounded-full border border-purple-500 bg-purple-50 text-purple-500">
-                      Design
-                    </span>
+              <a href="#">
+                <div className="grid grid-cols-3">
+                  <div className="col-span-1 gap-2">
+                    <Image
+                      src="/logos/dropbox.png"
+                      alt="Terraform"
+                      width={42}
+                      height={42}
+                    />
+                  </div>
+                  <div className="col-span-2">
+                    <h3 className="text-xl font-semibold text-[#28324a]">Interactive Developer</h3>
+                    <p className="text-gray-500 text-md mt-1">
+                      Terraform • Hamburg, Germany
+                    </p>
+                    <div className="flex gap-2 mt-3">
+                      <span className="px-3 py-1 text-sm rounded-full bg-green-50 text-green-500">
+                        Full-Time
+                      </span>
+                      <span className="px-3 py-1 text-sm rounded-full border border-orange-500 bg-orange-50 text-orange-500">
+                        Marketing
+                      </span>
+                      <span className="px-3 py-1 text-sm rounded-full border border-purple-500 bg-purple-50 text-purple-500">
+                        Design
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </a>
             </div>
 
             {/* 6 */}
             <div className="bg-white p-6 flex items-start justify-between">
-              <div className="grid grid-cols-3">
-                <div className="col-span-1 gap-2">
-                  <Image
-                    src="/logos/dropbox.png"
-                    alt="Udacity"
-                    width={42}
-                    height={42}
-                  />
-                </div>
-                <div className="col-span-2">
-                  <h3 className="text-xl font-semibold text-[#28324a]">Interactive Developer</h3>
-                  <p className="text-gray-500 text-md mt-1">
-                    Udacity • Hamburg, Germany
-                  </p>
-                  <div className="flex gap-2 mt-3">
-                    <span className="px-3 py-1 text-sm rounded-full bg-green-50 text-green-500">
-                      Full-Time
-                    </span>
-                    <span className="px-3 py-1 text-sm rounded-full border border-orange-500 bg-orange-50 text-orange-500">
-                      Marketing
-                    </span>
-                    <span className="px-3 py-1 text-sm rounded-full border border-purple-500 bg-purple-50 text-purple-500">
-                      Design
-                    </span>
+              <a href="#">
+                <div className="grid grid-cols-3">
+                  <div className="col-span-1 gap-2">
+                    <Image
+                      src="/logos/dropbox.png"
+                      alt="Udacity"
+                      width={42}
+                      height={42}
+                    />
                   </div>
-                </div>  
-              </div>
+                  <div className="col-span-2">
+                    <h3 className="text-xl font-semibold text-[#28324a]">Interactive Developer</h3>
+                    <p className="text-gray-500 text-md mt-1">
+                      Udacity • Hamburg, Germany
+                    </p>
+                    <div className="flex gap-2 mt-3">
+                      <span className="px-3 py-1 text-sm rounded-full bg-green-50 text-green-500">
+                        Full-Time
+                      </span>
+                      <span className="px-3 py-1 text-sm rounded-full border border-orange-500 bg-orange-50 text-orange-500">
+                        Marketing
+                      </span>
+                      <span className="px-3 py-1 text-sm rounded-full border border-purple-500 bg-purple-50 text-purple-500">
+                        Design
+                      </span>
+                    </div>
+                  </div>  
+                </div>
+              </a>
             </div>
 
             {/* 7 */}
             <div className="bg-white p-6 flex items-start justify-between">
-              <div className="grid grid-cols-3">
-                <div className="col-span-1 gap-2">
-                  <Image
-                    src="/logos/dropbox.png"
-                    alt="Packer"
-                    width={42}
-                    height={42}
-                  />
-                </div>
-                <div className="col-span-2">
-                  <h3 className="text-xl font-semibold text-[#28324a]">HR Manager</h3>
-                  <p className="text-gray-500 text-md mt-1">
-                    Packer • Lucern, Switzerland
-                  </p>
-                  <div className="flex gap-2 mt-3">
-                    <span className="px-3 py-1 text-sm rounded-full bg-green-50 text-green-500">
-                      Full-Time
-                    </span>
-                    <span className="px-3 py-1 text-sm rounded-full border border-orange-500 bg-orange-50 text-orange-500">
-                      Marketing
-                    </span>
-                    <span className="px-3 py-1 text-sm rounded-full border border-purple-500 bg-purple-50 text-purple-500">
-                      Design
-                    </span>
+              <a href="#">
+                <div className="grid grid-cols-3">
+                  <div className="col-span-1 gap-2">
+                    <Image
+                      src="/logos/dropbox.png"
+                      alt="Packer"
+                      width={42}
+                      height={42}
+                    />
+                  </div>
+                  <div className="col-span-2">
+                    <h3 className="text-xl font-semibold text-[#28324a]">HR Manager</h3>
+                    <p className="text-gray-500 text-md mt-1">
+                      Packer • Lucern, Switzerland
+                    </p>
+                    <div className="flex gap-2 mt-3">
+                      <span className="px-3 py-1 text-sm rounded-full bg-green-50 text-green-500">
+                        Full-Time
+                      </span>
+                      <span className="px-3 py-1 text-sm rounded-full border border-orange-500 bg-orange-50 text-orange-500">
+                        Marketing
+                      </span>
+                      <span className="px-3 py-1 text-sm rounded-full border border-purple-500 bg-purple-50 text-purple-500">
+                        Design
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </a>
             </div>
 
             {/* 8 */}
             <div className="bg-white p-6 flex items-start justify-between">
-              <div className="grid grid-cols-3">
-                <div className="col-span-1 gap-2">
-                  <Image
-                    src="/logos/dropbox.png"
-                    alt="Webflow"
-                    width={42}
-                    height={42}
-                  />
-                </div>
-                <div className="col-span-2">
-                  <h3 className="text-xl font-semibold text-[#28324a]">HR Manager</h3>
-                  <p className="text-gray-500 text-md mt-1">
-                    Webflow • Lucern, Switzerland
-                  </p>
-                  <div className="flex gap-2 mt-3">
-                    <span className="px-3 py-1 text-sm rounded-full bg-green-50 text-green-500">
-                      Full-Time
-                    </span>
-                    <span className="px-3 py-1 text-sm rounded-full border border-orange-500 bg-orange-50 text-orange-500">
-                      Marketing
-                    </span>
-                    <span className="px-3 py-1 text-sm rounded-full border border-purple-500 bg-purple-50 text-purple-500">
-                      Design
-                    </span>
+              <a href="#">
+                <div className="grid grid-cols-3">
+                  <div className="col-span-1 gap-2">
+                    <Image
+                      src="/logos/dropbox.png"
+                      alt="Webflow"
+                      width={42}
+                      height={42}
+                    />
+                  </div>
+                  <div className="col-span-2">
+                    <h3 className="text-xl font-semibold text-[#28324a]">HR Manager</h3>
+                    <p className="text-gray-500 text-md mt-1">
+                      Webflow • Lucern, Switzerland
+                    </p>
+                    <div className="flex gap-2 mt-3">
+                      <span className="px-3 py-1 text-sm rounded-full bg-green-50 text-green-500">
+                        Full-Time
+                      </span>
+                      <span className="px-3 py-1 text-sm rounded-full border border-orange-500 bg-orange-50 text-orange-500">
+                        Marketing
+                      </span>
+                      <span className="px-3 py-1 text-sm rounded-full border border-purple-500 bg-purple-50 text-purple-500">
+                        Design
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </a>
             </div>
           </div>
         </div>
       </section>
-
-      {/* FOOTER */}
-      <footer className="text-gray-300 py-16 px-6">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="text-xl font-semibold text-white">JobHuntly</span>
-            </div>
-            <p className="text-sm mt-4">
-              Great platform for the job seeker that passionate about startups. Find your dream job easier.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="font-semibold text-white mb-4">About</h3>
-            <ul className="space-y-2 text-sm">
-              <li><a href="#" className="hover:text-white">Companies</a></li>
-              <li><a href="#" className="hover:text-white">Pricing</a></li>
-              <li><a href="#" className="hover:text-white">Terms</a></li>
-              <li><a href="#" className="hover:text-white">Advice</a></li>
-              <li><a href="#" className="hover:text-white">Privacy Policy</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-semibold text-white mb-4">Resources</h3>
-            <ul className="space-y-2 text-sm">
-              <li><a href="#" className="hover:text-white">Help Docs</a></li>
-              <li><a href="#" className="hover:text-white">Guide</a></li>
-              <li><a href="#" className="hover:text-white">Updates</a></li>
-              <li><a href="#" className="hover:text-white">Contact Us</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-semibold text-white mb-4">Get job notifications</h3>
-            <p className="text-sm mb-4">
-              The latest job news, articles, sent to your inbox weekly.
-            </p>
-            <div className="flex">
-              <input
-                type="email"
-                placeholder="Email Address"
-                className="px-4 py-2 rounded-l-md bg-white text-gray-700 text-sm w-full focus:outline-none"
-              />
-              <button className="px-4 py-2 bg-indigo-600 text-white font-semibold rounded-r-md hover:bg-indigo-700">
-                Subscribe
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div className="border-t border-gray-700 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
-          <p>2021 © JobHuntly. All rights reserved.</p>
-          <div className="flex gap-4 mt-4 md:mt-0">
-            <a href="#" className="p-2 bg-gray-800 rounded-full hover:bg-gray-700">
-              <Facebook size={16} />
-            </a>
-            <a href="#" className="p-2 bg-gray-800 rounded-full hover:bg-gray-700">
-              <Instagram size={16} />
-            </a>
-            <a href="#" className="p-2 bg-gray-800 rounded-full hover:bg-gray-700">
-              <Dribbble size={16} />
-            </a>
-            <a href="#" className="p-2 bg-gray-800 rounded-full hover:bg-gray-700">
-              <Linkedin size={16} />
-            </a>
-            <a href="#" className="p-2 bg-gray-800 rounded-full hover:bg-gray-700">
-              <Twitter size={16} />
-            </a>
-          </div>
-        </div>
-      </footer>
       
     </div>
   );
